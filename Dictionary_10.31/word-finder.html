@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<!--
+  COLLABORATORS:
+  
+-->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Word Finder</title>
+
+<!-- Load any supplemental Javascript libraries here -->
+<script type="text/javascript" src="jquery-1.5.min.js"></script>
+<script type="text/javascript" src="words-small.json"></script>
+<script type="text/javascript" src="words-large.json"></script>
+
+<script type="text/javascript" src="dictionary.js"></script>
+
+<script type="text/javascript">
+  var dict
+  function myFunction() { 
+    var input = document.getElementById("search").value;
+    document.getElementById("demo").innerHTML = dict.search(input);
+}
+// <![CDATA[
+
+// This allows the Javascript code inside this block to only run when the page
+// has finished loading in the browser.
+$(document).ready(function() {
+	dict = new Dictionary(words);
+	// Your code here
+
+});
+
+// ]]>
+</script>
+
+<style type="text/css">
+
+/* Your CSS here */
+html {
+    background-color: #eee;
+}
+
+</style>
+
+</head>
+<body>
+
+    <label>Find: </label>
+    <input type="text" id="search">
+    <button onclick="myFunction()">search</button>
+ 
+  <p id="demo"></p>
+
+
+<!-- Your HTML here -->
+
+</body>
+</html>
