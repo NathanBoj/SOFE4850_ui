@@ -23,19 +23,22 @@
   function myFunction() { 
     input = document.getElementById("search").value;
     document.getElementById("demo").innerHTML = dict.search(input);
+    document.getElementById("total").innerHTML = dict.size(input);
 }
 
 function clearText(){
   document.getElementById("search").value = "";
   input = "";
   document.getElementById("demo").innerHTML = dict.search(input);
+  document.getElementById("total").innerHTML = dict.size("");
 }
 // <![CDATA[
 
 // This allows the Javascript code inside this block to only run when the page
 // has finished loading in the browser.
 $(document).ready(function() {
-	// var dict = new Dictionary(words);
+	 var dict = new Dictionary(words);
+   document.getElementById("total").innerHTML = dict.size("");
 });
 
 // ]]>
@@ -48,16 +51,49 @@ html {
     background-color: #eee;
 }
 
+#find{
+  margin-left: 15px;
+}
+
+#clear{
+  margin: 10px;
+}
+
+#demo {
+  background-color: white;
+  width: 325px;
+  height: 300px;
+  overflow: scroll;
+  margin-left: 50px;
+}
+
+#search{
+  width: 300px;
+}
+
+#wordsTotal{
+  margin-left: 50px;
+  margin-bottom: 10px;
+}
+
+
 </style>
 
 </head>
 <body>
 
-    <label>Find: </label>
+    <label id="find">Find:</label>
     <input type="text" id="search" oninput="myFunction()">
-    <button onclick="clearText()">Clear</button>
+    <button id="clear" onclick="clearText()">Clear</button>
+
+    <table id="wordsTotal">
+      <tr>
+        <td id="total"></td>
+        <td>words total</td>
+      </tr>
+    </table>
  
-  <p id="demo"></p>
+  <div id="demo"></div>
 
 
 <!-- Your HTML here -->

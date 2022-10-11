@@ -32,10 +32,10 @@ var Dictionary = function(words) {
 	/**
 	 * Returns the total number of words in this dictionary
 	 *
-	 * @returns the number of words in this dictionary
+	 * @returns the number of words from the query
 	 */
-	this.size = function() {
-		return words.length;
+	this.size = function(query) {
+		return this.search(query).length;
 	}
 
 	/**
