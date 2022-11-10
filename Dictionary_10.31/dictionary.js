@@ -22,9 +22,14 @@ var Dictionary = function(words) {
 	 * @param query the substring to search for
 	 * @returns an array of the results that contain the query substring
 	 */
+
+	
+
 	this.search = function(query) {
+		
 		var pattern = new RegExp(query, "i");
 		return $.grep(words, function(w) {
+			
 			return pattern.test(w);
 		});
 	};

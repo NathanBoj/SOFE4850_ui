@@ -20,16 +20,45 @@
   var input;
   var dict = new Dictionary(words);
 
-  function myFunction() { 
+  //My search function, is called whenever the input changes
+  function mySearch() { 
     input = document.getElementById("search").value;
-    document.getElementById("demo").innerHTML = dict.search(input);
+
+    //for blank
+    if (input == ""){
+      document.getElementById("demo").innerHTML = "";
+    //normal word
+    }else{
+    //get list of all matching words
+    var list = dict.search(input);
+    text = []
+    
+    //push all words with a break line to have words displayed in rows
+    for (var i = 0; i < list.length; i++){
+      text.push(list[i] + "<br />");
+    }
+
+    //join the words and display in html
+    document.getElementById("demo").innerHTML = text.join("");
+    }
+    //display total words in html
     document.getElementById("total").innerHTML = dict.size(input);
+    
 }
 
+//my clear function
 function clearText(){
+  //show all words when button is clicked
   document.getElementById("search").value = "";
   input = "";
-  document.getElementById("demo").innerHTML = dict.search(input);
+  var list = dict.search(input);
+    text = []
+
+    for (var i = 0; i < list.length; i++){
+      text.push(list[i] + "<br />");
+    }
+
+    document.getElementById("demo").innerHTML = text.join("");
   document.getElementById("total").innerHTML = dict.size("");
 }
 // <![CDATA[
@@ -83,7 +112,7 @@ html {
 <body>
 
     <label id="find">Find:</label>
-    <input type="text" id="search" oninput="myFunction()">
+    <input type="text" id="search" oninput="mySearch()">
     <button id="clear" onclick="clearText()">Clear</button>
 
     <table id="wordsTotal">
@@ -92,7 +121,7 @@ html {
         <td>words total</td>
       </tr>
     </table>
- 
+  
   <div id="demo"></div>
 
 
